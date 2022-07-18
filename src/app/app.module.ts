@@ -6,7 +6,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
 import {InputTextModule} from 'primeng/inputtext';
-import { PollSummaryComponent } from './poll-summary/poll-summary.component';
+import { PollListComponent } from './poll-list/poll-list.component';
 import {CardModule} from 'primeng/card';
 
 
@@ -16,7 +16,7 @@ import {CardModule} from 'primeng/card';
   declarations: [
     AppComponent,
     NavbarComponent,
-    PollSummaryComponent
+    PollListComponent
   ],
   imports: [
     BrowserModule,
