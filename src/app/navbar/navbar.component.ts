@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
 
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,7 +15,8 @@ export class NavbarComponent  implements OnInit{
     this.items = [
       {
         label:'View Polls',
-        icon:'pi pi-fw pi-star'
+        icon:'pi pi-fw pi-star',
+        routerLink:'polls',
       },
       {
         label:'Add Poll',

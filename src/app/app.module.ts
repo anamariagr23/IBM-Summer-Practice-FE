@@ -8,6 +8,8 @@ import {MenuItem} from 'primeng/api';
 import {InputTextModule} from 'primeng/inputtext';
 import { PollListComponent } from './poll-list/poll-list.component';
 import {CardModule} from 'primeng/card';
+import { AppRoutingModule } from './app-routing/app-routing.module';
+import { PollDetailsComponent } from './poll-details/poll-details.component';
 
 
 
@@ -16,13 +18,15 @@ import {CardModule} from 'primeng/card';
   declarations: [
     AppComponent,
     NavbarComponent,
-    PollListComponent
+    PollListComponent,
+    PollDetailsComponent
   ],
   imports: [
     BrowserModule,
     MenubarModule,
     InputTextModule,
-    CardModule
+    CardModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
