@@ -1,1 +1,13 @@
-<p>poll-details works!</p>
+<p-card header={{pollDetails.topic}} subheader={{pollDetails.closingDate}} [style]="{width: '360px'}" styleClass="p-card-shadow">
+    <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+        <p-rating [stars]="10" name="answer" ngModel [cancel]="false"></p-rating>
+        <span class="p-float-label">
+            <textarea id="float-input" rows="5" cols="30" pInputTextarea></textarea>
+            <label for="float-input">Summary</label>
+        </span>
+        <p-button type="submit" label="Submit" icon="pi pi-check"></p-button>
+        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
+        </p-button>
+    </form>
+
+</p-card>

@@ -10,7 +10,10 @@ import { PollListComponent } from './poll-list/poll-list.component';
 import {CardModule} from 'primeng/card';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { PollDetailsComponent } from './poll-details/poll-details.component';
-
+import {ButtonModule} from 'primeng/button';
+import {RatingModule} from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 
 
@@ -26,7 +29,11 @@ import { PollDetailsComponent } from './poll-details/poll-details.component';
     MenubarModule,
     InputTextModule,
     CardModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ButtonModule,
+    RatingModule,
+    FormsModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

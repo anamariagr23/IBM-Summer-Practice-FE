@@ -20,4 +20,5 @@ describe('PollDetailsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });
