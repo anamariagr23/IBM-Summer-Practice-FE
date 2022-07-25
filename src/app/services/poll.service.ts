@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { PollDetails } from '../models/poll-details';
 import { PollSummary } from '../models/poll-summary';
 
 @Injectable({
@@ -7,7 +8,7 @@ import { PollSummary } from '../models/poll-summary';
 })
 export class PollService {
 
-  mockPollSummaryList : PollSummary[] = [
+  mockPollSummaryList: PollSummary[] = [
     {
       id: 1,
       topic: "Concediu mai lung?",
@@ -46,7 +47,18 @@ export class PollService {
     }
   ];
 
-  getPollSummaryList() : Observable<PollSummary[]>{
+  mockPollDetails: PollDetails = {
+    id: 8,
+    topic: "Cat de mult va place Timisoara?",
+    closingDate: "22/09/2022",
+    comment: undefined,
+    answer: undefined
+  }
+
+  getPollSummaryList(): Observable<PollSummary[]> {
     return of(this.mockPollSummaryList)
+  }
+  getPollDetails(id: number) {
+    return of(this.mockPollDetails)
   }
 }
