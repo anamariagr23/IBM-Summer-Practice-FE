@@ -2,7 +2,7 @@
     <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
         <p-rating [stars]="10" name="answer" ngModel [cancel]="false"></p-rating>
         <span class="p-float-label">
-            <textarea id="float-input" rows="5" cols="30" pInputTextarea></textarea>
+            <textarea id="float-input" name="comment" rows="5" cols="30" ngModel pInputTextarea></textarea>
             <label for="float-input">Summary</label>
         </span>
         <p-button type="submit" label="Submit" icon="pi pi-check"></p-button>
