@@ -21,8 +21,20 @@ export class PollDetailsComponent implements OnInit {
     });
 
   }
-  onSubmit(form: NgForm){
-    console.log(form);
+  // onSubmit(form: NgForm){
+    
+  //   const answerValue=form.form.controls["answer"].value;
+  //   const newPollDetails:PollDetails={
+  //     ...this.pollDetails,
+  //     answer:answerValue,
+  //     comment:"lol"
+  //   }
+  //   console.log(this.pollDetails);
+  //   console.log(form.form.controls["answer"].value);
+  //   console.log(newPollDetails);
+  // }
+  onSubmit(pollAnswer:NgForm){
+    
   }
 
 }

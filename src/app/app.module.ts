@@ -14,7 +14,7 @@ import {ButtonModule} from 'primeng/button';
 import {RatingModule} from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import {InputTextareaModule} from 'primeng/inputtextarea';
-
+import {HttpClientModule} from '@angular/common/http'
 
 
 @NgModule({
@@ -33,7 +33,8 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
     ButtonModule,
     RatingModule,
     FormsModule,
-    InputTextareaModule
+    InputTextareaModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
