@@ -1,0 +1,25 @@
+<div class="card-container">
+    <p-card header="Create Poll" [style]="{width: '360px'}" styleClass="p-card-shadow">
+        <form (ngSubmit)="onPollCreate(pollCreateForm.value)" #pollCreateForm="ngForm">
+
+            <span class="p-float-label">
+                <textarea id="float-input" name="topic" rows="5" cols="30" ngModel pInputTextarea></textarea>
+                <label for="float-input">Enter the topic</label>
+            </span>
+            <div>
+                <label for="startingDate">Starting Date</label><br>
+                <p-calendar dateFormat="mm-dd-yy" name="startingDate" ngModel inputId="startingDate"></p-calendar>
+            </div>
+            <br>
+            <div>
+                <label for="closingDate">Closing Date</label><br>
+                <p-calendar dateFormat="mm-dd-yy" name="closingDate" ngModel inputId="closingDate"></p-calendar>
+            </div>
+            <br>
+            <p-button type="submit" label="Create" icon="pi pi-check"></p-button>
+            <p-button label="Cancel" (click)="pollCreateForm.reset()"  icon="pi pi-times" styleClass="p-button-secondary"
+                [style]="{'margin-left': '.5em'}">
+            </p-button>
+        </form>
+    </p-card>
+</div>

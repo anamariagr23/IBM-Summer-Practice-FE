@@ -1,8 +1,9 @@
 export interface PollDetails{
-    id: number;
-    topic: string;
-    closingDate: string;
-    comment?:string;
-    answer?:number;
+    id: string;
+    topic?: string;
+    startingDate?: Date;
+    closingDate?: Date;
+    comment?: string;
+    answer?: number;
   }
   

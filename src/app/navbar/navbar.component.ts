@@ -20,7 +20,8 @@ export class NavbarComponent  implements OnInit{
       },
       {
         label:'Add Poll',
-        icon:'pi pi-fw pi-plus'
+        icon:'pi pi-fw pi-plus',
+        routerLink:'add-poll',
       }
     ];
   }
