@@ -7,22 +7,25 @@ import {MenubarModule} from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
 import {InputTextModule} from 'primeng/inputtext';
 import { PollListComponent } from './poll-list/poll-list.component';
-import {CardModule} from 'primeng/card';
+import { CardModule } from 'primeng/card';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { PollDetailsComponent } from './poll-details/poll-details.component';
-import {ButtonModule} from 'primeng/button';
-import {RatingModule} from 'primeng/rating';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
-import {InputTextareaModule} from 'primeng/inputtextarea';
-import {HttpClientModule} from '@angular/common/http'
-
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { HttpClientModule } from '@angular/common/http';
+import { CreatePollComponent } from './create-poll/create-poll.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CalendarModule } from 'primeng/calendar';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     PollListComponent,
-    PollDetailsComponent
+    PollDetailsComponent,
+    CreatePollComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,9 @@ import {HttpClientModule} from '@angular/common/http'
     RatingModule,
     FormsModule,
     InputTextareaModule,
-    HttpClientModule
+    HttpClientModule,
+    CalendarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

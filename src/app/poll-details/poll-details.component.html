@@ -1,13 +1,19 @@
-<p-card header={{pollDetails.topic}} subheader={{pollDetails.closingDate}} [style]="{width: '360px'}" styleClass="p-card-shadow">
-    <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
-        <p-rating [stars]="10" name="answer" ngModel [cancel]="false"></p-rating>
-        <span class="p-float-label">
-            <textarea id="float-input" name="comment" rows="5" cols="30" ngModel pInputTextarea></textarea>
-            <label for="float-input">Summary</label>
-        </span>
-        <p-button type="submit" label="Submit" icon="pi pi-check"></p-button>
-        <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary" [style]="{'margin-left': '.5em'}">
-        </p-button>
-    </form>
+<div class="card-container">
+    <p-card header={{pollDetails.topic}} subheader={{pollDetails.closingDate}} [style]="{width: '360px'}"
+        styleClass="p-card-shadow">
+        <form (ngSubmit)="onSubmit(pollAnswersForm.value)" #pollAnswersForm="ngForm">
+            <p-rating [stars]="10" name="answer" ngModel [cancel]="false"></p-rating>
+            <br>
+            <span class="p-float-label">
+                <textarea id="float-input" name="comment" rows="5" cols="30" ngModel pInputTextarea></textarea>
+                <label for="float-input">Summary</label>
+            </span>
+            <br>
+            <p-button type="submit" label="Submit" icon="pi pi-check"></p-button>
+            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"
+                [style]="{'margin-left': '.5em'}">
+            </p-button>
+        </form>
 
-</p-card>
+    </p-card>
+</div>

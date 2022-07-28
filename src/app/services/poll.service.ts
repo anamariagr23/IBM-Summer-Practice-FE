@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs';
 import { PollDetails } from '../models/poll-details';
 import { PollSummary } from '../models/poll-summary';
 
@@ -7,58 +9,42 @@ import { PollSummary } from '../models/poll-summary';
   providedIn: 'root'
 })
 export class PollService {
+  constructor(private http:HttpClient) { }
+  public pollSummaryList : PollDetails[] = [];
 
-  mockPollSummaryList: PollSummary[] = [
-    {
-      id: 1,
-      topic: "Concediu mai lung?",
-      authorId: 3,
-      closingDate: "14/09/2022"
-    },
-    {
-      id: 2,
-      topic: "Concediu mai scurt?",
-      authorId: 3,
-      closingDate: "23/10/2022"
-    },
-    {
-      id: 5,
-      topic: "Cat de mult va place Timisoara?",
-      authorId: 3,
-      closingDate: "20/09/2022"
-    },
-    {
-      id: 6,
-      topic: "Drumeție la munte",
-      authorId: 8,
-      closingDate: "10/09/2022"
-    },
-    {
-      id: 7,
-      topic: "Teambuilding septembrie",
-      authorId: 3,
-      closingDate: "21/09/2022"
-    },
-    {
-      id: 8,
-      topic: "Cat de mult va place Timisoara?",
-      authorId: 4,
-      closingDate: "22/09/2022"
-    }
-  ];
-
-  mockPollDetails: PollDetails = {
-    id: 8,
-    topic: "Cat de mult va place Timisoara?",
-    closingDate: "22/09/2022",
-    comment: undefined,
-    answer: undefined
+  createPoll(polls: {topic: string, startingDate: Date, closingDate: Date }){
+    console.log(polls)
+    this.http.post('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/polls.json',polls)
+    .subscribe((res) =>{
+      console.log(res);
+    });
   }
 
-  getPollSummaryList(): Observable<PollSummary[]> {
-    return of(this.mockPollSummaryList)
+  getPollList(){
+    return this.http.get<{[key:string]:PollDetails}>('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/polls.json')
+    .pipe(map((res)=>{
+      const polls = [];
+      for(const key in res){
+        if(res.hasOwnProperty(key)){
+          polls.push({...res[key],id:key})
+        }
+        
+
+      }
+      this.pollSummaryList=polls;
+      return polls;
+      
+
+    }))
+    
   }
-  getPollDetails(id: number) {
-    return of(this.mockPollDetails)
+  getPollDetails(id: string) {
+    let currentPoll = this.pollSummaryList.find((p)=>{return p.id === id})
+    console.log(this.pollSummaryList)
+    return of(currentPoll);
   }
+
+
+
+
 }

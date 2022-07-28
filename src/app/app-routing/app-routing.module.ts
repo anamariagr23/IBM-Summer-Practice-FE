@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { PollListComponent } from '../poll-list/poll-list.component';
 import { PollDetailsComponent } from '../poll-details/poll-details.component';
+import { CreatePollComponent } from '../create-poll/create-poll.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path: 'polls/:id',
     component: PollDetailsComponent,
+  },
+  {
+    path: 'add-poll',
+    component: CreatePollComponent,
   },
   {
     path: '**',
