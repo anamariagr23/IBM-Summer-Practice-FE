@@ -1,18 +1,29 @@
 <div class="card-container">
     <p-card header={{pollDetails.topic}} subheader={{pollDetails.closingDate}} [style]="{width: '360px'}"
         styleClass="p-card-shadow">
-        <form (ngSubmit)="onSubmit(pollAnswersForm.value)" #pollAnswersForm="ngForm">
+        <form (ngSubmit)="pollAnswersForm.form.get('answer').dirty && onSubmit(pollAnswersForm.value) "
+            #pollAnswersForm="ngForm">
             <p-rating [stars]="10" name="answer" ngModel [cancel]="false"></p-rating>
+            <!-- <small *ngIf="!pollAnswersForm.form.get('answer').dirty" id="answer" class="p-error">Rating
+                required</small><br> -->
+            <small *ngIf="!hasUserAlreadyAnswered()"  class="p-error">Rating
+                required</small><br>
             <br>
             <span class="p-float-label">
                 <textarea id="float-input" name="comment" rows="5" cols="30" ngModel pInputTextarea></textarea>
                 <label for="float-input">Summary</label>
             </span>
             <br>
-            <p-button type="submit" label="Submit" icon="pi pi-check"></p-button>
-            <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"
+            <p-button *ngIf="!hasUserAlreadyAnswered()" type="submit" label="Submit" icon="pi pi-check" styleClass=" p-button-sm"
+                [style]="{'margin-left': '.5em'}"></p-button>
+            <!-- <p-button label="Cancel" icon="pi pi-times" styleClass=" p-button-sm p-button-secondary"
                 [style]="{'margin-left': '.5em'}">
-            </p-button>
+            </p-button> -->
+            <p-button type="button" label="Delete" styleClass="p-button-danger p-button-sm "
+                [style]="{'margin-left': '.5em'}" (onClick)="deletePoll(pollDetails.id)"></p-button>
+
+            <p-button *ngIf="hasUserAlreadyAnswered()" type="button" label="Update" styleClass="p-button-outlined p-button-sm "
+                [style]="{'margin-left': '.5em'}" (onClick)="updatePollAnswer(pollAnswersForm.value)"></p-button>
         </form>
 
     </p-card>
