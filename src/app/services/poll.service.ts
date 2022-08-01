@@ -12,12 +12,11 @@ export class PollService {
   constructor(private http:HttpClient) { }
   public pollSummaryList : PollDetails[] = [];
 
-  createPoll(polls: {topic: string, startingDate: Date, closingDate: Date }){
-    console.log(polls)
-    this.http.post('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/polls.json',polls)
-    .subscribe((res) =>{
-      console.log(res);
-    });
+  createPoll(poll: PollDetails):Observable<PollDetails>{
+    console.log(poll)
+    
+    return this.http.post<PollDetails>('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/polls.json',poll)
+    
   }
 
   getPollList(){

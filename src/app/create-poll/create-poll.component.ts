@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Timestamp } from 'rxjs';
+import { Router, RouterLink } from '@angular/router';
+import { Observable, Timestamp } from 'rxjs';
+import { PollDetails } from '../models/poll-details';
 import { PollService } from '../services/poll.service';
 
 @Component({
@@ -12,15 +14,22 @@ import { PollService } from '../services/poll.service';
 export class CreatePollComponent implements OnInit {
  
   @ViewChild("pollCreateForm") pollCreateForm?: NgForm;
+
+  @Output() createPoll:EventEmitter<Observable<PollDetails>>=new EventEmitter();
   
-  constructor(private http:HttpClient,private pollService:PollService) { }
+  constructor(private http:HttpClient,private pollService:PollService,private router:Router) { }
   ngOnInit(): void {
 
 
   }
-  onPollCreate(polls: {topic: string, startingDate: Date, closingDate: Date }) {
-   this.pollService.createPoll(polls);
+  onPollCreate(poll:PollDetails) {
+     this.pollService.createPoll(poll)
+     .subscribe((createdPoll:PollDetails) => {
+      this.router.navigate(['/polls'])
+     })
+    
     this.pollCreateForm?.resetForm();
+    
   }
 
 
