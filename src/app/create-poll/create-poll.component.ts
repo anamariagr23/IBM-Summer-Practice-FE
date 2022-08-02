@@ -12,24 +12,24 @@ import { PollService } from '../services/poll.service';
   styleUrls: ['./create-poll.component.css']
 })
 export class CreatePollComponent implements OnInit {
- 
+
   @ViewChild("pollCreateForm") pollCreateForm?: NgForm;
 
-  @Output() createPoll:EventEmitter<Observable<PollDetails>>=new EventEmitter();
-  
-  constructor(private http:HttpClient,private pollService:PollService,private router:Router) { }
+  @Output() createPoll: EventEmitter<Observable<PollDetails>> = new EventEmitter();
+
+  constructor(private http: HttpClient, private pollService: PollService, private router: Router) { }
   ngOnInit(): void {
 
 
   }
-  onPollCreate(poll:PollDetails) {
-     this.pollService.createPoll(poll)
-     .subscribe((createdPoll:PollDetails) => {
-      this.router.navigate(['/polls'])
-     })
-    
+  onPollCreate(poll: PollDetails) {
+    this.pollService.createPoll(poll)
+      .subscribe((createdPoll: PollDetails) => {
+        this.router.navigate(['/polls'])
+      })
+
     this.pollCreateForm?.resetForm();
-    
+
   }
 
 

@@ -15,12 +15,12 @@ export class PollService {
   createPoll(poll: PollDetails):Observable<PollDetails>{
     console.log(poll)
     
-    return this.http.post<PollDetails>('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/polls.json',poll)
+    return this.http.post<PollDetails>('http://localhost:8080/poll/add',poll)
     
   }
 
   getPollList(){
-    return this.http.get<{[key:string]:PollDetails}>('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/polls.json')
+    return this.http.get<{[key:string]:PollDetails}>('http://localhost:8080/poll/all')
     .pipe(map((res)=>{
       const polls = [];
       for(const key in res){
@@ -37,7 +37,7 @@ export class PollService {
     }))
     
   }
-  getPollDetails(id: string) {
+  getPollDetails(id: number) {
     let currentPoll = this.pollSummaryList.find((p)=>{return p.id === id})
     console.log(this.pollSummaryList)
     return of(currentPoll);

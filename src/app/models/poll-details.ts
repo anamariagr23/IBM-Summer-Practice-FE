@@ -1,5 +1,5 @@
 export interface PollDetails{
-    id: string;
+    id: number;
     topic?: string;
     startingDate?: Date;
     closingDate?: Date;
