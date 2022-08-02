@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PollDetails } from '../models/poll-details';
 import { PollService } from '../services/poll.service';
 import { AnswerDetails } from '../models/answer-details';
@@ -20,7 +20,7 @@ export class PollDetailsComponent implements OnInit {
   public pollDetails: PollDetails; 
   public answerDetails: AnswerDetails;
 
-  constructor(private route: ActivatedRoute, private http: HttpClient, private pollService: PollService,private pollAnswerService: PollAnswersService) { }
+  constructor(private route: ActivatedRoute, private http: HttpClient, private pollService: PollService,private pollAnswerService: PollAnswersService,private router:Router) { }
   
   onSubmit(form: NgForm) {
 
@@ -46,7 +46,7 @@ export class PollDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .subscribe(parms => {
-        let id = parms.get('id');
+        let id = <number><unknown>parms.get('id');
         console.log(id);
         this.pollService.getPollDetails(id).subscribe((response) => this.pollDetails = response);
         this.pollAnswerService.getAnswerByPollIdAndUserId(1,id).subscribe((response)=> 
@@ -67,9 +67,11 @@ export class PollDetailsComponent implements OnInit {
     console.log(this.pollDetails);
   }
 
-  deletePoll(id: string) {
+  deletePoll(id: number) {
     this.http.delete('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/polls/' + id + '.json')
       .subscribe();
+    
+    
 
   }
 

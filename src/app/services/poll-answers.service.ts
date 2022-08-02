@@ -37,7 +37,7 @@ export class PollAnswersService {
    
   }
   
-  getAnswerByPollIdAndUserId(userId:number,pollId:string){
+  getAnswerByPollIdAndUserId(userId:number,pollId:number){
     let pollAnswer: AnswerDetails;
     var subject = new Subject<AnswerDetails>();
     this.getAnswersList()
