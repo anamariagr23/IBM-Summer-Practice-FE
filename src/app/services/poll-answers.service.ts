@@ -12,14 +12,14 @@ export class PollAnswersService {
   constructor(private http: HttpClient) { }
 
   createAnswer(answer: AnswerDetails) {
-    this.http.post('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/answers.json', answer)
+    this.http.post('http://localhost:8080/answers/add', answer)
       .subscribe((res) => {
         console.log(res);
       })
 
   }
   getAnswersList(){
-    return this.http.get<{[key:string]:AnswerDetails}>('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/answers.json')
+    return this.http.get<{[key:string]:AnswerDetails}>('http://localhost:8080/answers/')
     .pipe(map((res)=>{
       const answers = [];
       for(const key in res){
@@ -38,20 +38,21 @@ export class PollAnswersService {
   }
   
   getAnswerByPollIdAndUserId(userId:number,pollId:number){
-    let pollAnswer: AnswerDetails;
-    var subject = new Subject<AnswerDetails>();
-    this.getAnswersList()
-    .subscribe((answers) => {
-      pollAnswer = answers.find((answer)=>{return answer.pollId ===pollId && answer.userId === userId});
-      subject.next(pollAnswer);
-    })
-    return subject.asObservable();
+    return this.http.get<AnswerDetails>('http://localhost:8080/answers/find/poll/'+pollId+'/user/'+userId);
+    // let pollAnswer: AnswerDetails;
+    // var subject = new Subject<AnswerDetails>();
+    // this.getAnswersList()
+    // .subscribe((answers) => {
+    //   pollAnswer = answers.find((answer)=>{return answer.pollId ===pollId && answer.userId === userId});
+    //   subject.next(pollAnswer);
+    // })
+    // return subject.asObservable();
     
   
   }
 
-  updateAnswer(id:string,answer:AnswerDetails){
-    return this.http.put('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/answers/'+id+'.json',answer)
+  updateAnswer(id:number,answer:AnswerDetails){
+    return this.http.put('http://localhost:8080/answers/update',answer)
     .subscribe()
 
   }

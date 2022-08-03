@@ -5,6 +5,7 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { PollListComponent } from '../poll-list/poll-list.component';
 import { PollDetailsComponent } from '../poll-details/poll-details.component';
 import { CreatePollComponent } from '../create-poll/create-poll.component';
+import { ChartAnswerComponent } from '../chart-answer/chart-answer.component';
 
 const routes: Routes = [
   {
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'add-poll',
     component: CreatePollComponent,
+  },
+  {
+    path: 'chart-answer',
+    component: ChartAnswerComponent,
   },
   {
     path: '**',

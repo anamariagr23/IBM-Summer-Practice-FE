@@ -31,8 +31,8 @@ export class PollDetailsComponent implements OnInit {
       userId: 1,
       pollId: this.pollDetails.id,
       voteDate: new Date(),
-      voteRating: answerValue,
-      comment: commentValue,
+      vottingDetail: answerValue,
+      content: commentValue,
     }
     // if(answerValue){
     //   this.pollAnswerService.createAnswer(this.answerDetails);
@@ -46,21 +46,25 @@ export class PollDetailsComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap
       .subscribe(parms => {
+        
         let id = <number><unknown>parms.get('id');
         console.log(id);
         this.pollService.getPollDetails(id).subscribe((response) => this.pollDetails = response);
         this.pollAnswerService.getAnswerByPollIdAndUserId(1,id).subscribe((response)=> 
         {
-          this.pollAnswersForm.setValue({answer:response.voteRating, comment:response.comment});
-          this.answerDetails = {
-            voteRating:response.voteRating,
-            comment:response.comment,
-            id: response.id,
-            userId: response.userId,
-            pollId: response.pollId,
-            voteDate: response.voteDate
-
-          };
+          if(response){
+            this.pollAnswersForm.setValue({answer:response.vottingDetail, comment:response.content});
+            this.answerDetails = {
+              vottingDetail:response.vottingDetail,
+              content:response.content,
+              id: response.id,
+              userId: response.userId,
+              pollId: response.pollId,
+              voteDate: response.voteDate
+  
+            };
+          }
+          
           console.log(response);
         })
       });
@@ -68,7 +72,7 @@ export class PollDetailsComponent implements OnInit {
   }
 
   deletePoll(id: number) {
-    this.http.delete('https://pollmetterbe-default-rtdb.europe-west1.firebasedatabase.app/polls/' + id + '.json')
+    this.http.delete('http://localhost:8080/poll/delete/' + id )
       .subscribe();
     
     
@@ -77,7 +81,7 @@ export class PollDetailsComponent implements OnInit {
 
   hasUserAlreadyAnswered(){
     
-    return typeof this.answerDetails !== 'undefined' && this.answerDetails.voteRating;
+    return typeof this.answerDetails !== 'undefined' && this.answerDetails.vottingDetail;
   }
  
   updatePollAnswer(form: NgForm){
@@ -94,14 +98,13 @@ export class PollDetailsComponent implements OnInit {
     //   comment: commentValue,
     // }
     var answerToBeSent : AnswerDetails = {
-      ...this.answerDetails,
-      id:undefined
+      ...this.answerDetails
     
     }
 
     answerToBeSent.voteDate = new Date();
-    answerToBeSent.voteRating= answerValue;
-    answerToBeSent.comment= commentValue;
+    answerToBeSent.vottingDetail= answerValue;
+    answerToBeSent.content= commentValue;
     console.log(this.answerDetails);
     this.pollAnswerService.updateAnswer(this.answerDetails.id,answerToBeSent);
 
