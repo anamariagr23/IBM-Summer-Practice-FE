@@ -20,27 +20,16 @@ export class PollService {
   }
 
   getPollList(){
-    return this.http.get<{[key:string]:PollDetails}>('http://localhost:8080/poll/all')
-    .pipe(map((res)=>{
-      const polls = [];
-      for(const key in res){
-        if(res.hasOwnProperty(key)){
-          polls.push({...res[key],id:key})
-        }
-        
-
-      }
-      this.pollSummaryList=polls;
-      return polls;
-      
-
-    }))
+    return this.http.get<PollDetails[]>('http://localhost:8080/poll/');
+    
     
   }
+
   getPollDetails(id: number) {
-    let currentPoll = this.pollSummaryList.find((p)=>{return p.id === id})
-    console.log(this.pollSummaryList)
-    return of(currentPoll);
+    console.log(id);
+    return this.http.get<PollDetails>('http://localhost:8080/poll/find/'+id);
+    
+    
   }
 
 

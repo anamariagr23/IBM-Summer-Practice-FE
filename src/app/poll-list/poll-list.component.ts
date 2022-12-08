@@ -35,10 +35,6 @@ export class PollListComponent implements OnInit {
     this.getPollSummaryList();
   }
 
-  onGetPollSummaryList(){
-    this.getPollSummaryList();
-  }
-
   private getPollSummaryList(){
     this.pollService.getPollList()
     .subscribe((polls) => {

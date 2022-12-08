@@ -18,6 +18,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CreatePollComponent } from './create-poll/create-poll.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule } from 'primeng/calendar';
+import { ChartAnswerComponent } from './chart-answer/chart-answer.component';
+import {ChartModule} from 'primeng/chart';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,8 @@ import { CalendarModule } from 'primeng/calendar';
     NavbarComponent,
     PollListComponent,
     PollDetailsComponent,
-    CreatePollComponent
+    CreatePollComponent,
+    ChartAnswerComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +43,9 @@ import { CalendarModule } from 'primeng/calendar';
     InputTextareaModule,
     HttpClientModule,
     CalendarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ChartModule,
+    DropdownModule
   ],
   providers: [],
   bootstrap: [AppComponent]
