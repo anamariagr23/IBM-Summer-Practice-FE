@@ -1,0 +1,11 @@
+.card-container {
+    position: absolute;
+    top: 50%; right: 50%;
+    transform: translate(50%,-50%);
+}
+.ui-card-title {
+    text-align: center;
+}
+.login-elements-spacing {
+    margin-bottom:20px;
+}

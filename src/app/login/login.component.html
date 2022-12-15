@@ -1,0 +1,25 @@
+
+<div class="card-container " >
+    <p-card class="ui-card-title"  header="Login"  [style]="{width: '360px'}"
+        styleClass="p-card-shadow">
+        <form  #loginForm="ngForm">
+            
+            <div class="login-elements-spacing" >
+                <input  type="text" pInputText  placeholder="Username" > 
+            </div>
+            
+            <!-- <p-password [(ngModel)]="value3" [toggleMask]="true"></p-password> -->
+            <div class="login-elements-spacing">
+                <p-password  placeholder="Password"></p-password>
+            </div>
+
+            <div class="flex justify-content-center login-elements-spacing">
+                <button pButton pRipple type="button" label="Login" class="p-button-rounded" [style]="{'text-align': 'center'}"></button>
+            </div>
+
+            <p>Not a member? <a [routerLink]="['/login']" [queryParams]="{debug: true}">Sign up</a></p>
+            
+        </form>
+
+    </p-card>
+</div>

@@ -6,6 +6,7 @@ import { PollListComponent } from '../poll-list/poll-list.component';
 import { PollDetailsComponent } from '../poll-details/poll-details.component';
 import { CreatePollComponent } from '../create-poll/create-poll.component';
 import { ChartAnswerComponent } from '../chart-answer/chart-answer.component';
+import { LoginComponent } from '../login/login.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'chart-answer',
     component: ChartAnswerComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   },
   {
     path: '**',
