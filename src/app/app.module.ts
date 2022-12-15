@@ -21,6 +21,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { ChartAnswerComponent } from './chart-answer/chart-answer.component';
 import {ChartModule} from 'primeng/chart';
 import {DropdownModule} from 'primeng/dropdown';
+import { LoginComponent } from './login/login.component';
+import {PasswordModule} from 'primeng/password';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import {DropdownModule} from 'primeng/dropdown';
     PollListComponent,
     PollDetailsComponent,
     CreatePollComponent,
-    ChartAnswerComponent
+    ChartAnswerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import {DropdownModule} from 'primeng/dropdown';
     CalendarModule,
     BrowserAnimationsModule,
     ChartModule,
-    DropdownModule
+    DropdownModule,
+    PasswordModule
   ],
   providers: [],
   bootstrap: [AppComponent]
